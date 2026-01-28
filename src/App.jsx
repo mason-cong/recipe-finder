@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Search, Clock, Users, ChefHat, Plus, X } from 'lucide-react';
+import RecipeChatbot from './components/RecipeChatbot';
 
 const RecipeFinder = () => {
   const [ingredients, setIngredients] = useState([]);
@@ -42,9 +43,6 @@ const RecipeFinder = () => {
 // API configuration - Replace with your actual Spoonacular API key
   const API_KEY = "f32bbf8eb1f34ed59658185c44fee18f";
   const API_BASE_URL = 'https://api.spoonacular.com/recipes';
-
-  const recipeDatabase = [
-  ];
 
   const addIngredient = () => {
     if (inputValue.trim() && !ingredients.includes(inputValue.trim().toLowerCase())) {
@@ -426,6 +424,7 @@ const RecipeFinder = () => {
           </div>
         )}
       </div>
+      <RecipeChatbot />
     </div>
   );
 };
