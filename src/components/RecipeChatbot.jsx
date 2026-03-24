@@ -12,8 +12,7 @@ export default function RecipeChatbot() {
   const [isOpen, setIsOpen] = useState(false);
   const [conversationContext, setConversationContext] = useState([]);
   
-  // Replace this with your actual Spoonacular API key
-  const spoonacularKey = 'YOUR_SPOONAf32bbf8eb1f34ed59658185c44fee18f';
+  const spoonacularKey = import.meta.env.VITE_SPOONACULAR_API_KEY;
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });

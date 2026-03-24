@@ -40,8 +40,8 @@ const RecipeFinder = () => {
     { value: 'vietnamese', label: 'Vietnamese' }
   ];
 
-// API configuration - Replace with your actual Spoonacular API key
-  const API_KEY = "f32bbf8eb1f34ed59658185c44fee18f";
+// API configuration
+  const API_KEY = import.meta.env.VITE_SPOONACULAR_API_KEY;
   const API_BASE_URL = 'https://api.spoonacular.com/recipes';
 
   const addIngredient = () => {
@@ -68,7 +68,7 @@ const RecipeFinder = () => {
   
   try {
     // Check if API key is set
-    if (API_KEY !== 'f32bbf8eb1f34ed59658185c44fee18f') {
+    if (!API_KEY) {
       // Use demo data if no API key is configured
       setRecipes();
       setIsLoading(false);
