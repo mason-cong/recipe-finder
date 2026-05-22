@@ -240,7 +240,7 @@ export default function RecipeChatbot() {
       {!isOpen && (
         <button
           onClick={() => setIsOpen(true)}
-          className="pointer-events-auto fixed bottom-6 right-6 bg-orange-500 text-white p-4 rounded-full shadow-lg hover:bg-orange-600 transition-all hover:scale-110"
+          className="pointer-events-auto fixed bottom-4 right-4 sm:bottom-6 sm:right-6 bg-orange-500 text-white p-4 rounded-full shadow-lg hover:bg-orange-600 transition-all hover:scale-110"
         >
           <ChefHat className="w-6 h-6" />
         </button>
@@ -248,7 +248,7 @@ export default function RecipeChatbot() {
 
       {/* Chat Window */}
       {isOpen && (
-        <div className="pointer-events-auto fixed bottom-6 right-6 w-96 h-[600px] bg-white rounded-2xl shadow-2xl flex flex-col overflow-hidden">
+        <div className="pointer-events-auto fixed inset-x-3 bottom-3 top-3 sm:inset-auto sm:bottom-6 sm:right-6 sm:top-auto sm:w-96 sm:h-[600px] sm:max-h-[calc(100vh-3rem)] bg-white rounded-2xl shadow-2xl flex flex-col overflow-hidden">
           {/* Header */}
           <div className="bg-orange-500 text-white px-6 py-4 flex items-center justify-between">
             <div className="flex items-center gap-2">

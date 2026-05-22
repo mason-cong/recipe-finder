@@ -181,48 +181,50 @@ const RecipeFinder = () => {
 
   return (
     
-    <div className="min-h-screen bg-gradient-to-br from-orange-50 to-red-50 p-4">
+    <div className="min-h-screen bg-gradient-to-br from-orange-50 to-red-50 p-3 sm:p-4">
       <div className="max-w-4xl mx-auto">
         {/* Header */}
-        <div className="text-center mb-8">
-          <div className="flex items-center justify-center mb-4">
-            <ChefHat className="w-12 h-12 text-orange-600 mr-3" />
-            <h1 className="text-4xl font-bold text-gray-800">Recipe Finder</h1>
+        <div className="text-center mb-6 sm:mb-8">
+          <div className="flex items-center justify-center mb-3 sm:mb-4">
+            <ChefHat className="w-9 h-9 sm:w-12 sm:h-12 text-orange-600 mr-2 sm:mr-3" />
+            <h1 className="text-2xl sm:text-4xl font-bold text-gray-800">Recipe Finder</h1>
           </div>
-          <p className="text-lg text-gray-600">
+          <p className="text-sm sm:text-lg text-gray-600">
             Enter your ingredients and discover delicious recipes you can make!
           </p>
         </div>
 
-        <div className="bg-white rounded-xl shadow-lg p-6 mb-8">
-          <h2 className="text-2xl font-semibold mb-4 text-gray-800">Your Ingredients</h2>
-          
-          <div className="flex gap-2 mb-4">
+        <div className="bg-white rounded-xl shadow-lg p-4 sm:p-6 mb-6 sm:mb-8">
+          <h2 className="text-xl sm:text-2xl font-semibold mb-4 text-gray-800">Your Ingredients</h2>
+
+          <div className="flex flex-col sm:flex-row gap-2 mb-4">
             <input
               type="text"
               value={inputValue}
               onChange={(e) => setInputValue(e.target.value)}
               onKeyPress={handleKeyPress}
               placeholder="Enter an ingredient (e.g., chicken, tomatoes, pasta)"
-              className="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
+              className="flex-1 min-w-0 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
             />
-            <select
-              value={selectedCuisine}
-              onChange={(e) => setSelectedCuisine(e.target.value)}
-              className="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 bg-white min-w-[140px]"
-            >
-              {cuisines.map((cuisine) => (
-                <option key={cuisine.value} value={cuisine.value}>
-                  {cuisine.label}
-                </option>
-              ))}
-            </select>
-            <button
-              onClick={addIngredient}
-              className="px-4 py-2 bg-orange-600 text-white rounded-lg hover:bg-orange-700 transition-colors flex items-center"
-            >
-              <Plus className="w-5 h-5" />
-            </button>
+            <div className="flex gap-2">
+              <select
+                value={selectedCuisine}
+                onChange={(e) => setSelectedCuisine(e.target.value)}
+                className="flex-1 sm:flex-none px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 bg-white sm:min-w-[140px]"
+              >
+                {cuisines.map((cuisine) => (
+                  <option key={cuisine.value} value={cuisine.value}>
+                    {cuisine.label}
+                  </option>
+                ))}
+              </select>
+              <button
+                onClick={addIngredient}
+                className="px-4 py-2 bg-orange-600 text-white rounded-lg hover:bg-orange-700 transition-colors flex items-center justify-center shrink-0"
+              >
+                <Plus className="w-5 h-5" />
+              </button>
+            </div>
           </div>
 
           {/* Ingredient Tags and Cuisine Filter Display */}
@@ -271,20 +273,20 @@ const RecipeFinder = () => {
 
         {/* Results Section */}
         {recipes.length > 0 && (
-          <div className="bg-white rounded-xl shadow-lg p-6">
-            <h2 className="text-2xl font-semibold mb-6 text-gray-800">
+          <div className="bg-white rounded-xl shadow-lg p-4 sm:p-6">
+            <h2 className="text-xl sm:text-2xl font-semibold mb-4 sm:mb-6 text-gray-800">
               Found {recipes.length} Recipe{recipes.length !== 1 ? 's' : ''}
             </h2>
-            
-            <div className="grid gap-6 md:grid-cols-2">
+
+            <div className="grid gap-4 sm:gap-6 md:grid-cols-2">
               {recipes.map((recipe) => (
                 <div
                   key={recipe.id}
-                  className="border border-gray-200 rounded-lg p-6 hover:shadow-md transition-shadow"
+                  className="border border-gray-200 rounded-lg p-4 sm:p-6 hover:shadow-md transition-shadow"
                 >
-                  <div className="flex items-start justify-between mb-3">
-                    <div className="flex-1">
-                      <h3 className="text-xl font-semibold text-gray-800 mb-1">
+                  <div className="flex items-start justify-between gap-2 mb-3">
+                    <div className="flex-1 min-w-0">
+                      <h3 className="text-lg sm:text-xl font-semibold text-gray-800 mb-1 break-words">
                         {typeof recipe.image === 'string' && recipe.image.startsWith('http') ? (
                           <img src={recipe.image} alt={recipe.name} className="w-8 h-8 rounded inline mr-2" />
                         ) : (
@@ -292,7 +294,7 @@ const RecipeFinder = () => {
                         )}
                         {recipe.name}
                       </h3>
-                      <div className="flex items-center gap-4 text-sm text-gray-600">
+                      <div className="flex flex-wrap items-center gap-x-3 gap-y-1 sm:gap-4 text-sm text-gray-600">
                         <span className="flex items-center">
                           <Clock className="w-4 h-4 mr-1" />
                           {recipe.cookTime}
